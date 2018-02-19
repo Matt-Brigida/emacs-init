@@ -67,7 +67,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (evil-vimish-fold emmet-mode company-web vimish-fold ox-reveal spaceline dashboard page-break-lines airline-themes company gscholar-bibtex elpy disaster chess anaconda-mode ibuffer-projectile indium color-theme-sanityinc-tomorrow rainbow-delimiters dash highlight-parentheses xkcd ample-theme yaml-mode biblio magit-gh-pulls async visual-regexp ein linum-relative solarized-theme slime powerline-evil markdown-mode+ magit lua-mode jazz-theme helm-swoop helm-projectile helm-flyspell gotham-theme folding flycheck ess-smart-underscore discover-my-major darkroom darkmine-theme cyberpunk-theme color-theme-sanityinc-solarized color-theme auto-complete)))
+    (dimmer define-word evil-vimish-fold emmet-mode company-web vimish-fold ox-reveal spaceline dashboard page-break-lines airline-themes company gscholar-bibtex elpy disaster chess anaconda-mode ibuffer-projectile indium color-theme-sanityinc-tomorrow rainbow-delimiters dash highlight-parentheses xkcd ample-theme yaml-mode biblio magit-gh-pulls async visual-regexp ein linum-relative solarized-theme slime powerline-evil markdown-mode+ magit lua-mode jazz-theme helm-swoop helm-projectile helm-flyspell gotham-theme folding flycheck ess-smart-underscore discover-my-major darkroom darkmine-theme cyberpunk-theme color-theme-sanityinc-solarized color-theme auto-complete)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(send-mail-function nil)
@@ -172,8 +172,8 @@ vi style of % jumping to matching brace."
 
 
 ;;;different color theme depending on whether in terminal or X --- works
-(cond ((daemonp) (load-theme 'sanityinc-tomorrow-eighties t))
-      ((window-system) (load-theme 'sanityinc-tomorrow-eighties t))
+(cond ((daemonp) (load-theme 'sanityinc-tomorrow-night t))
+      ((window-system) (load-theme 'sanityinc-tomorrow-night t))
       (t (color-theme-clarity)))
 
 ;;; using the above now instead -- delete the below soon.
@@ -466,10 +466,10 @@ vi style of % jumping to matching brace."
 (require 'airline-themes)
 ;; (load-theme 'airline-dark)
 ;; (load-theme' airline-base16-gui-dark)
-(load-theme 'airline-doom-molokai)
+;; (load-theme 'airline-doom-molokai)
 ;; (load-theme 'airline-papercolor)
 ;; (load-theme 'airline-solarized-gui)
-;; (load-theme 'airline-solarized-alternate-gui)
+(load-theme 'airline-solarized-alternate-gui)
 
 ;; powerline evil
 ;; (require 'powerline-evil)
@@ -722,3 +722,7 @@ vi style of % jumping to matching brace."
 
 ;;; map C-z to query replace -----
 (global-set-key (kbd "C-z") 'query-replace)
+
+;;; dimmer
+(dimmer-mode)
+(setq dimmer-fraction 0.2)
