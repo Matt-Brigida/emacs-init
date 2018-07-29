@@ -67,7 +67,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (dimmer define-word evil-vimish-fold emmet-mode company-web vimish-fold ox-reveal spaceline dashboard page-break-lines airline-themes company gscholar-bibtex elpy disaster chess anaconda-mode ibuffer-projectile indium color-theme-sanityinc-tomorrow rainbow-delimiters dash highlight-parentheses xkcd ample-theme yaml-mode biblio magit-gh-pulls async visual-regexp ein linum-relative solarized-theme slime powerline-evil markdown-mode+ magit lua-mode jazz-theme helm-swoop helm-projectile helm-flyspell gotham-theme folding flycheck ess-smart-underscore discover-my-major darkroom darkmine-theme cyberpunk-theme color-theme-sanityinc-solarized color-theme auto-complete)))
+    (spacemacs-theme zenburn-theme bbdb dimmer define-word evil-vimish-fold emmet-mode company-web vimish-fold ox-reveal spaceline dashboard page-break-lines airline-themes company gscholar-bibtex elpy disaster chess anaconda-mode ibuffer-projectile indium color-theme-sanityinc-tomorrow rainbow-delimiters dash highlight-parentheses xkcd ample-theme yaml-mode biblio magit-gh-pulls async visual-regexp ein linum-relative solarized-theme slime powerline-evil markdown-mode+ magit lua-mode jazz-theme helm-swoop helm-projectile helm-flyspell gotham-theme folding flycheck ess-smart-underscore discover-my-major darkroom darkmine-theme cyberpunk-theme color-theme-sanityinc-solarized color-theme auto-complete)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(send-mail-function nil)
@@ -172,8 +172,8 @@ vi style of % jumping to matching brace."
 
 
 ;;;different color theme depending on whether in terminal or X --- works
-(cond ((daemonp) (load-theme 'sanityinc-tomorrow-night t))
-      ((window-system) (load-theme 'sanityinc-tomorrow-night t))
+(cond ((daemonp) (load-theme 'spacemacs-dark t))
+      ((window-system) (load-theme 'spacemacs-dark t))
       (t (color-theme-clarity)))
 
 ;;; using the above now instead -- delete the below soon.
@@ -464,12 +464,12 @@ vi style of % jumping to matching brace."
 ;; (powerline-center-theme)
 
 (require 'airline-themes)
-;; (load-theme 'airline-dark)
+(load-theme 'airline-dark)
 ;; (load-theme' airline-base16-gui-dark)
 ;; (load-theme 'airline-doom-molokai)
 ;; (load-theme 'airline-papercolor)
 ;; (load-theme 'airline-solarized-gui)
-(load-theme 'airline-solarized-alternate-gui)
+;; (load-theme 'airline-solarized-alternate-gui)
 
 ;; powerline evil
 ;; (require 'powerline-evil)
@@ -499,9 +499,20 @@ vi style of % jumping to matching brace."
 ;; (key-chord-mode 1)
 ;; (key-chord-define evil-insert-state-map "fd" 'evil-normal-state)
 
+;; spacemacs modeline
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+(put 'upcase-region 'disabled nil)
+;; (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+
+;;; turning on vim fold
+;; (require 'vimish-fold)
+;; (vimish-fold-global-mode 1)
+
 ;; ;;make it evil
 ;; (evil-vimish-fold-mode 1)
 
+;; add keychord for fold
 ;; Dont Uncomment Also ---
 ;; (custom-theme-set-faces 'solarized-dark '(powerline-evil-normal-face
 ;;                                     ((t (:foreground "blue")))))
@@ -679,7 +690,7 @@ vi style of % jumping to matching brace."
 ;;   "Insert string for the current time formatted like '2:34 PM'."
 ;;   (interactive)                 ; permit invocation in minibuffer
 ;;   (insert (format-time-string "%D %-I:%M %p")))
-(setq dashboard-banner-logo-title "Greetings Earthling!")
+(setq dashboard-banner-logo-title "One Editor to Rule Them All") ;;"Greetings Earthling!")
 ;; Set the banner
 ;; (setq dashboard-startup-banner "~/website_background.png")
 (setq dashboard-startup-banner 'logo)
@@ -695,16 +706,6 @@ vi style of % jumping to matching brace."
                         ;; (agenda . 5)
                         (registers . 5)))
 
-;; spacemacs modeline
-(require 'spaceline-config)
-(spaceline-spacemacs-theme)
-(put 'upcase-region 'disabled nil)
-;; (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-
-;;; turning on vim fold
-(require 'vimish-fold)
-(vimish-fold-global-mode 1)
-;; add keychord for fold
 
 ;;;stuff for web development
 
@@ -726,3 +727,11 @@ vi style of % jumping to matching brace."
 ;;; dimmer
 (dimmer-mode)
 (setq dimmer-fraction 0.2)
+(put 'downcase-region 'disabled nil)
+
+;; add for indium (javascript)
+(require 'indium)
+(add-hook 'js-mode-hook #'indium-interaction-mode)
+
+;; enter gpg key in minibuffer
+(setq epa-pinentry-mode 'loopback)
